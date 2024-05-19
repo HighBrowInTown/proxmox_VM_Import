@@ -23,7 +23,12 @@ EXTRACT_FILE () {
 
     local EXTNS
     EXTNS="${INPUT_FILE##*.}"
-    [ "${EXTNS}" == 'rar' ] && echo "INFO: EXTRACTING RAR FILE" &&  unrar x "${TEMP}/${INPUT_FILE}" "${TEMP}" && rm "${TEMP}/${INPUT_FILE}"
+    if [ "${EXTNS}" = 'rar' ] 
+        then 
+            echo "INFO: EXTRACTING RAR FILE"
+            unrar x "${TEMP}/${INPUT_FILE}" "${TEMP}" 
+            rm "${TEMP}/${INPUT_FILE}"
+    fi
 }
 
 
