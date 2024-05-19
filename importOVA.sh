@@ -3,8 +3,7 @@
 URL="${1}"
 [ -z "${URL}" ] && INPUT_FILE="${1}"
 [ -n "${URL}" ] && INPUT_FILE="$(basename "${URL}")"
-# STORE="/mnt/pve/local-storage/vulnhub"
-STORE="/usr/local/src/proxmox_VM_Import"
+STORE="/mnt/pve/local-storage/vulnhub"
 TEMP="${STORE}/tmp/"
 
 VM_ID="1000"
