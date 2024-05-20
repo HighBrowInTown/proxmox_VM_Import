@@ -5,9 +5,7 @@ URL="${1}"
 [ -n "${URL}" ] && INPUT_FILE="$(basename "${URL}")"
 STORE="/mnt/pve/local-storage/vulnhub"
 TEMP="${STORE}/tmp/"
-
 VM_ID="1000"
-
 
 DOWNLOAD_FILES () {
     [ -z "${URL}" ] && echo "ERROR: NO URL FOUND" && exit 1
@@ -31,12 +29,12 @@ EXTRACT_FILE () {
     fi
 }
 
-
 #Create a VM using vmdk file
 IMPORT_VMDK () {
 
     local VM_NAME VMDK_FILE LAST_VMID
-    VM_NAME="$(basename "${INPUT_FILE%.*}")" 
+    VM_NAME="$(basename "${INPUT_FILE%.*}")"
+    VM_NAME="${VM_NAME//_/-}"
     VMDK_FILE="$(find "${TEMP}" -name "*.vmdk")"
     LAST_VMID="$(qm list | awk 'END{print $1}')"
     [ "${VM_ID}" -le "${LAST_VMID}" ] && VM_ID=$((LAST_VMID + 1))
