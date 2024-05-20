@@ -26,6 +26,16 @@ EXTRACT_FILE () {
             echo "INFO: EXTRACTING RAR FILE"
             unrar x "${TEMP}/${INPUT_FILE}" "${TEMP}" 
             rm "${TEMP}/${INPUT_FILE}"
+    elif [ "${EXTNS}" = 'zip' ]
+        then 
+            echo "INFO: EXTRACTING ZIP FILE"
+            unzip "${TEMP}/${INPUT_FILE}" -d "${TEMP}" 
+            rm "${TEMP}/${INPUT_FILE}"
+    elif [ "${EXTNS}" = '7z' ]
+        then 
+            echo "INFO: EXTRACTING 7z FILE"
+            7z "${TEMP}/${INPUT_FILE}" -o "${TEMP}" 
+            rm "${TEMP}/${INPUT_FILE}"
     fi
 }
 
