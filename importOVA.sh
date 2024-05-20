@@ -10,7 +10,7 @@ VM_ID="1000"
 DOWNLOAD_FILES () {
     [ -z "${URL}" ] && echo "ERROR: NO URL FOUND" && exit 1
     echo "INFO: REMOVING OLD WORKING DIRECTORY"
-    [ -d "${TEMP}" ] && rm -rf "${TEMP}" && mkidr -p "${TEMP}"
+    [ -d "${TEMP}" ] && rm -rf "${TEMP}" 
     [ ! -d "${TEMP}" ] && mkdir -p "${TEMP}"
     echo "INFO: DOWNLOADING FILE FROM - ${URL}"
     wget "${URL}" -P "${TEMP}"
